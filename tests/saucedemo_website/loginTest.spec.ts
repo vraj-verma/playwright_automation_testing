@@ -1,5 +1,25 @@
 import { test, expect } from '@playwright/test';
 
+// Before Each
+test.beforeEach(async ({ page }) => {
+    await page.goto('https://www.saucedemo.com/');
+
+    // first get anf fill the email field selector
+    await page.locator('#user-name').fill(credentials[0].user_name);
+    // second get anf fill the email field selector
+    await page.locator('#password').fill(credentials[0].pass_word);
+    // now click to login/submit button
+    await page.locator('#login-button').click();
+
+    await page.waitForURL('https://www.saucedemo.com/inventory.html');
+
+    // Expecting the given URL
+    await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
+
+    await page.waitForTimeout(6000);
+});
+
+// Checking for Title
 test.describe('Title', () => {
     test('Should match the title', async ({ browser }) => {
         const fresh_browser = await browser.newContext();
@@ -12,6 +32,7 @@ test.describe('Title', () => {
     });
 });
 
+// Login-Credentails
 const credentials = [
     {
         user_name: 'standard_user',
@@ -31,8 +52,9 @@ const credentials = [
     },
 ];
 
+// Login
 test.describe('Login', () => {
-    test.only('Login should happen', async ({ page }) => {
+    test('Login should happen', async ({ page }) => {
         await page.goto('https://www.saucedemo.com/');
 
         // first get anf fill the email field selector
