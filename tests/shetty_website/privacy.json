@@ -1,3 +1,10 @@
 {
-    "password":"qwerty@12345"
+    "shetty": {
+        "username": "rahulshettyacademy",
+        "password": "learning"
+    },
+    "daySchedule": {
+        "username": "sumit.verma@agenty.com",
+        "password": "qwerty@12345"
+    }
 }

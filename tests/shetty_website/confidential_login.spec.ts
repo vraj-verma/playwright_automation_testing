@@ -37,7 +37,5 @@ test.describe('Login', () => {
         await page.waitForURL('https://rahulshettyacademy.com/angularpractice/shop');
         expect(page.url()).toBe('https://rahulshettyacademy.com/angularpractice/shop');
         console.log('Login Success.');
-
-
     });
 });

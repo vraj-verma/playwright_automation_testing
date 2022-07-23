@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import {test,expect} from '@playwright/test';
 
 // Login-Credentails
 const credentials = [
@@ -20,12 +20,13 @@ const credentials = [
     },
 ];
 
-// Log In before each test run
+
+// Before Each
 test.beforeEach(async ({ page }) => {
     await page.goto('https://www.saucedemo.com/');
 
     // first get anf fill the email field selector
-    await page.locator('#user-name').fill(credentials[2].user_name);
+    await page.locator('#user-name').fill(credentials[0].user_name);
     // second get anf fill the email field selector
     await page.locator('#password').fill(credentials[0].pass_word);
     // now click to login/submit button
@@ -36,14 +37,5 @@ test.beforeEach(async ({ page }) => {
     // Expecting the given URL
     await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
 
-    await page.waitForTimeout(3000);
-});
-
-test.describe('Image Scraper',()=>{
-    test('Will scrape all the images of products',async({page})=>{
-        // Image Selector
-        const image_element = page.locator("img.inventory_item_img");
-        const img_src = await image_element.getAttribute('src');
-        console.log(img_src); 
-    });
+    await page.waitForTimeout(6000);
 });

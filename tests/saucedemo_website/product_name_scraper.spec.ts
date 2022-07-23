@@ -71,3 +71,13 @@ test.describe('Scrape Product Name according to filter', () => {
     });
 });
 
+
+// Scraper all the images source url
+test.describe('Scrape image URL',()=>{
+    test.only('Image URL',async({page})=>{
+        const img_selector = page.locator('[src*="/static/media/"]');
+        const images = img_selector.getAttribute('src');
+        // document.write(`<li>${img_selector}`)
+        console.log(images);
+    });
+});
