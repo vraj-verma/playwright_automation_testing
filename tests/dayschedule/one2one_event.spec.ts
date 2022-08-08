@@ -13,8 +13,10 @@ test.describe('One to One Event', () => {
             await page.click('.close');
             expect(page.url()).toMatch('https://app.dayschedule.in/resources');
 
-            const accordion = await page.locator('#accordionSidebar li').allTextContents();
+        });
 
+        await test.step('Select Survey', async () => {
+            const accordion = await page.locator('#accordionSidebar li').allTextContents();
             for (let i = 0; i < accordion.length; i++) {
                 if (accordion[i] == 'Survey') {
                     await page.click(`#accordionSidebar li:nth-child(${accordion.indexOf('Survey') + 4})`);
@@ -23,6 +25,6 @@ test.describe('One to One Event', () => {
             };
             await page.waitForURL('https://app.dayschedule.in/surveys');
             expect(page.url()).toMatch('https://app.dayschedule.in/surveys');
-        });
+        })
     });
 });
